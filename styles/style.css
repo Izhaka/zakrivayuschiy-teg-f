@@ -17,4 +17,12 @@
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
+  font-family: var(--main-font-family, sans-serif);
+  font-variation-settings: 'wght' var(--main-font-weight, 400);
+  background-color: var(--bg-color, #fff);
+  color: var(--main-color, #000);
+}
+
+.test-floppy {
+  max-inline-size: 28px;
 }
