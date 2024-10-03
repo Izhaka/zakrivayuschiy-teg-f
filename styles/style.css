@@ -21,8 +21,13 @@
   font-variation-settings: 'wght' var(--main-font-weight, 400);
   background-color: var(--bg-color, #fff);
   color: var(--main-color, #000);
+  background-image: var(--bg-image, #fff);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
-.test-floppy {
+.save-icon {
   max-inline-size: 28px;
 }

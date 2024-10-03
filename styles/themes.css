@@ -5,13 +5,30 @@
 ✦ не забудьте описать стили для изменения темы через медизапрос пользовательских предпочтений
 */
 :root.theme-dark {
-
   --bg-color: #000;
   --main-color: #00cc14;
+
+  --bg-image: repeating-linear-gradient(#000 0 2px, transparent 2px 4px),
+    repeating-linear-gradient(90deg, #000 0 2px, transparent 2px 4px),
+    linear-gradient(#007f0c, #004306);
 }
 
 :root.theme-light {
-
   --bg-color: #fff;
   --main-color: #000;
+
+  --bg-image: repeating-linear-gradient(#fff 0 2px, transparent 2px 4px),
+    repeating-linear-gradient(90deg, #fff 0 2px, transparent 2px 4px),
+    linear-gradient(#e7e7e7 0.01%, #1a1a1a);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #000;
+    --main-color: #00cc14;
+
+    --bg-image: repeating-linear-gradient(#000 0 2px, transparent 2px 4px),
+    repeating-linear-gradient(90deg, #000 0 2px, transparent 2px 4px),
+    linear-gradient(#007f0c, #004306);
+  }
 }

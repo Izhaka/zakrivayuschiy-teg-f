@@ -18,6 +18,8 @@
   </head>
   <body class="page">
     <header class="header">
+      <a class="header__logo">&lt;/html&gt;</a>
+      <h1 class="header__title">закрывающий тег</h1>
       <nav class="theme-menu header__theme-menu">
         <!-- Не меняйте разметку этого списка, иначе скрипты перестанут работать -->
         <ul class="theme-menu__list">
@@ -44,18 +46,112 @@
         </ul>
       </nav>
     </header>
-    <main></main>
-    <picture>
-      <source srcset="./images/camper.avif" type="image/avif">
-      <source srcset="./images/camper.webp" type="image/webp">
-      <img src="./images/camper.jpg" alt="Рисунок трейлера, стоящего на пустынной местности на фоне ночного звёздного неба, в стиле пиксель-арт">
-    </picture>
-    <div class="test-floppy">
-      <svg viewBox="0 0 28 28">
-        <use href="./svg/floppy.svg#floppy"></use>
-      </svg>
-    </div>
-
+    <main class="content">
+      <section class="cards">
+        <ul class="cards__list">
+          <li class="cards_list-item">
+            <article class="card">
+              <h2 class="card__title">
+                Фритрек и нулевой спринт: Подготовка к работе
+              </h2>
+              <div class="card__image-container">
+                <span class="card__tag">&lt;/HTML&gt;</span>
+                <img
+                  class="card__img"
+                  src="./images/camper.jpg"
+                  alt="Рисунок трейлера, стоящего на пустынной местности на фоне ночного звёздного неба, в стиле пиксель-арт"
+                />
+              </div>
+              <div class="card__description">
+                <p class="card__text">
+                  Это было самое начало пути. На этом этапе важно было
+                  проникнуться основами и настроиться на учёбу. И, возможно,
+                  подумать, как новые знания могут повлиять на ваше будущее.
+                </p>
+                <p class="card__text">
+                  Место для ваших воспоминаний о начале обучения.
+                </p>
+              </div>
+              <div class="card__buttons-container">
+                <button type="button" class="button card__icon-button">
+                  <svg
+                    class="like-icon"
+                    viewBox="0 0 39 36"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  ></svg>
+                </button>
+                <button type="button" class="button card__like-button">
+                  <span class="button__text">Like</span>
+                </button>
+              </div>
+            </article>
+          </li>
+          <li class="cards_list-item">
+            <article class="card">
+              <h2 class="card__title"></h2>
+              <div class="card__image-container">
+                <span class="card__tag">&lt;/HTML&gt;</span>
+                <img
+                  class="card__img"
+                  src="./images/camper.jpg"
+                  loading="lazy"
+                  alt="Рисунок трейлера, стоящего на пустынной местности на фоне ночного звёздного неба, в стиле пиксель-арт"
+                />
+              </div>
+              <div class="card__description">
+                <p class="card__text"></p>
+                <p class="card__text"></p>
+              </div>
+              <div class="card__buttons-container">
+                <button type="button">
+                  <svg
+                    class="like-icon"
+                    viewBox="0 0 39 36"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  ></svg>
+                </button>
+                <button type="button">
+                  <span class="button__text">Like</span>
+                </button>
+              </div>
+            </article>
+          </li>
+        </ul>
+      </section>
+      <section class="save-area">
+        <button
+          type="button"
+          onclick="window['dialog__save-window'].showModal()"
+          aria-controls="dialog__save-window"
+          class="button save-area__button"
+        >
+          <svg class="save-icon" viewBox="0 0 28 28">
+            <use href="./svg/floppy.svg#save-icon"></use>
+          </svg>
+          <span class="button__text">Сохранить на память</span>
+        </button>
+      </section>
+      <dialog
+        id="dialog__save-window"
+        class="dialog__save-window"
+        aria-label="Окно сохранения изображения"
+      >
+        <div class="dialog__content">
+          <svg class="save-icon" viewBox="0 0 39 39">
+            <use href="./svg/floppy.svg#save-icon"></use>
+          </svg>
+          <p class="dialog__text">Вставьте дискету, чтобы продолжить</p>
+        </div>
+        <!-- onclick="window['dialog__save-window'].close()" -->
+        <form class="dialog__close-form" method="dialog">
+          <button type="submit" class="button dialog__close-button">
+            <span class="button__text">OK</span>
+          </button>
+        </form>
+      </dialog>
+    </main>
     <script src="./scripts/like.js"></script>
   </body>
 </html>
