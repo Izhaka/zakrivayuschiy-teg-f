@@ -1,19 +1,3 @@
-/* Здесь вы напишете основную часть стилей страницы.
-
-Будьте внимательны! Для корректной работы скриптов на этом сайте нужно, чтобы в HTML некоторые классы были названы особым образом:
-✦ theme-dark — класс тёмной темы
-✦ theme-light — класс светлой темы
-✦ like-icon — для svg-иконки анимированного сердца
-✦ card__like-button — для кнопки Like рядом с иконкой
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ is-liked — для обозначения состояния лайкнутой иконки в виде сердца
-✦ button__text — для обозначения текстового элемента внутри кнопки
-
-Кроме этого, не меняйте HTML переключателя тем. Его разметка также гарантирует работу своего скрипта.
-
-*/
-
 .page {
   padding-block-start: 100px;
   color: var(--main-color, #000);
@@ -29,9 +13,13 @@
   font-variation-settings: "wght" var(--main-font-weight, 400);
 }
 
+/*Отключение прокрутки страницы при открытом модальном окне*/
+
 .page:has(.dialog__save-window[open]) {
   overflow: hidden;
 }
+
+/*Общие стили для кнопок*/
 
 .button {
   display: flex;
@@ -46,8 +34,29 @@
   cursor: pointer;
 }
 
+.button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  display: block;
+  background-color: var(--main-color, #000);
+  transition: transform 0.5s ease-in-out;
+  transform: scaleX(0);
+  transform-origin: center left;
+  block-size: 100%;
+  inline-size: 100%;
+}
+
+.button:hover::after {
+  transform: scaleX(1);
+}
+
 .button:focus {
   outline: none;
+}
+
+.button:focus-visible {
+  box-shadow: 2px 2px 0px 0px var(--main-color, #000);
 }
 
 .button__text {
@@ -130,8 +139,8 @@
 .theme-menu__button:disabled::before {
   content: "▶";
   position: absolute;
-  inset-block-start: 0;
-  inset-inline-start: -15px;
+  inset-block-start: 1px;
+  inset-inline-start: -13px;
 }
 
 .theme-menu__button::after {
@@ -233,38 +242,80 @@
 .card__icon-button {
   padding: 3px 0 0 0;
   block-size: 38px;
+  background-color: transparent;
+  border: 2px solid transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card__icon-button:focus {
+  outline: none;
 }
 
 .card__icon-button:focus-visible {
   border: 2px solid var(--main-color, #000);
 }
 
-.sparks {
-  opacity: 0;
+/*Стили для фильтров на картинки*/
+
+.card__img_saturate {
+  filter: saturate(2.45);
 }
+
+.card__img_sepia {
+  filter: sepia(0.64);
+}
+
+.card__img_hue-rotate {
+  filter: hue-rotate(160deg);
+}
+
+.card__img_invert {
+  filter: invert(0.95);
+}
+
+.card__img_contrast {
+  filter: contrast(1.4);
+}
+
+.card__img_opacity {
+  filter: opacity(0.4);
+}
+
+.card__img_brightness {
+  filter: brightness(1.32);
+}
+
+.card__img_multiple-filter {
+  filter: sepia(0.9) grayscale(1) brightness(0.5) blur(1px);
+}
+
+/*Иконка сердца базовое состояние*/
 
 .like-icon .core {
   fill: transparent;
   transition: fill 0.3s 0.03s linear;
 }
 
-.like-icon:hover .core {
-  fill: var(--svg-contour-color, #000);
-  transition: fill 0.3s linear;
-}
-
-.like-icon:active .core {
-  fill: var(--svg-fill-color, #ff0000);
-  transition: fill 0.3s linear;
-}
-
-.like-icon.is-liked .core {
-  fill: var(--svg-fill-color, #ff0000);
-  transition: fill 0.3s linear;
-}
-
 .like-icon .main-body {
   fill: transparent;
+  transition: fill 0.3s linear;
+}
+
+.like-icon .contour {
+  fill: var(--svg-contour-color, #000);
+  transition: fill 0.1s linear;
+}
+
+.like-icon .sparks {
+  opacity: 0;
+}
+
+/*Иконка сердца состояния hover и active*/
+
+.like-icon:hover .core {
+  fill: var(--svg-contour-color, #000);
   transition: fill 0.3s linear;
 }
 
@@ -273,9 +324,21 @@
   transition: fill 0.3s 0.05s linear;
 }
 
+.like-icon:active .core {
+  fill: var(--svg-fill-color, #ff0000);
+  transition: fill 0.3s linear;
+}
+
 .like-icon:active .main-body {
   fill: var(--svg-fill-color, #ff0000);
   transition: fill 0.3s 0.05s linear;
+}
+
+/*Иконка сердца состояние клика*/
+
+.like-icon.is-liked .core {
+  fill: var(--svg-fill-color, #ff0000);
+  transition: fill 0.3s linear;
 }
 
 .like-icon.is-liked .main-body {
@@ -283,43 +346,9 @@
   transition: fill 0.3s 0.05s linear;
 }
 
-.like-icon .contour {
-  fill: var(--svg-contour-color, #000);
-  transition: fill 0.1s linear;
-}
-
 .like-icon.is-liked .contour {
   fill: var(--svg-fill-color, #ff0000);
   transition: fill 0.3s 0.06s linear;
-}
-
-.like-icon.is-liked .heart {
-  transform-origin: center;
-  animation: svg-heart-scale 0.3s 0.1s ease-in backwards;
-}
-
-@keyframes svg-heart-scale {
-  from {
-    transform: scale(1);
-  }
-
-  to {
-    transform: scale(1.5);
-  }
-}
-
-.like-icon.is-liked .sparks {
-  animation: svg-heart-sparks 0.3s 0.3s ease-in backwards;
-}
-
-@keyframes svg-heart-sparks {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
 }
 
 .card__like-button {
@@ -330,19 +359,19 @@
   block-size: 38px;
 }
 
+.save-area {
+  display: flex;
+  justify-content: center;
+  padding-block-start: 50px;
+  padding-block-end: 103px;
+}
+
 .save-icon {
   position: relative;
   z-index: 1;
   color: var(--blend-color, #fff);
   inline-size: 21px;
   mix-blend-mode: difference;
-}
-
-.save-area {
-  display: flex;
-  justify-content: center;
-  padding-block-start: 50px;
-  padding-block-end: 103px;
 }
 
 .save-area__button {
@@ -355,32 +384,7 @@
   max-inline-size: 339px;
 }
 
-.card__like-button::after,
-.save-area__button::after,
-.dialog__close-button::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  display: block;
-  background-color: var(--main-color, #000);
-  transition: transform 0.5s ease-in-out;
-  transform: scaleX(0);
-  transform-origin: center left;
-  block-size: 100%;
-  inline-size: 100%;
-}
-
-.card__like-button:hover::after,
-.save-area__button:hover::after,
-.dialog__close-button:hover::after {
-  transform: scaleX(1);
-}
-
-.card__like-button:focus-visible,
-.save-area__button:focus-visible,
-.dialog__close-button:focus-visible {
-  box-shadow: 2px 2px 0px 0px var(--main-color, #000);
-}
+/*Модальное окно*/
 
 .dialog__save-window[open] {
   display: flex;
@@ -392,6 +396,8 @@
   padding: 30px;
   max-inline-size: 357px;
   inline-size: 100%;
+  background-color: var(--bg-color, #fff);
+  color: var(--main-color, #000);
 }
 
 .dialog__save-window::backdrop {
@@ -421,10 +427,9 @@
   block-size: 38px;
 }
 
+/*Стили для мобильных экранов*/
+
 @media (width < 376px) {
-  .header {
-    padding-block-end: 20px;
-  }
 
   .theme-menu__list {
     padding-inline-start: 4px;

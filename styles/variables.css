@@ -4,7 +4,7 @@
   --accent-font-family: "PressStart2P", "Arcade Normal", "Arcadepix", fantasy, sans-serif;
   --main-font-weight: 400;
   --headers-font-weight: 700;
-  --content-width: clamp(23.4375rem, 16.2852rem + 30.5164vw, 43.75rem); /*https://css-clamp-generator.com/*/
+  --content-width: clamp(23.4375rem, 16.2852rem + 30.5164vw, 43.75rem);
 
   --bg-color: #fff;
   --main-color: #000;
