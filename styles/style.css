@@ -13,12 +13,6 @@
   font-variation-settings: "wght" var(--main-font-weight, 400);
 }
 
-/*Отключение прокрутки страницы при открытом модальном окне*/
-
-.page:has(.dialog__save-window[open]) {
-  overflow: hidden;
-}
-
 /*Общие стили для кнопок*/
 
 .button {
@@ -215,6 +209,8 @@
 }
 
 .card__description {
+  display: grid;
+  gap: 27px;
   padding: 25px;
 }
 
@@ -222,10 +218,6 @@
   font-size: inherit;
   line-height: 1.17;
   font-variation-settings: "wght" var(--main-font-weight, 400);
-}
-
-.card__text:not(:last-of-type) {
-  margin-block-end: 27px;
 }
 
 .card__buttons-container {
@@ -287,66 +279,6 @@
 
 .card__img_multiple-filter {
   filter: sepia(0.9) grayscale(1) brightness(0.5) blur(1px);
-}
-
-/*Иконка сердца базовое состояние*/
-
-.like-icon .core {
-  fill: transparent;
-  transition: fill 0.3s 0.03s linear;
-}
-
-.like-icon .main-body {
-  fill: transparent;
-  transition: fill 0.3s linear;
-}
-
-.like-icon .contour {
-  fill: var(--svg-contour-color, #000);
-  transition: fill 0.1s linear;
-}
-
-.like-icon .sparks {
-  opacity: 0;
-}
-
-/*Иконка сердца состояния hover и active*/
-
-.like-icon:hover .core {
-  fill: var(--svg-contour-color, #000);
-  transition: fill 0.3s linear;
-}
-
-.like-icon:hover .main-body {
-  fill: var(--svg-contour-color, #000);
-  transition: fill 0.3s 0.05s linear;
-}
-
-.like-icon:active .core {
-  fill: var(--svg-fill-color, #ff0000);
-  transition: fill 0.3s linear;
-}
-
-.like-icon:active .main-body {
-  fill: var(--svg-fill-color, #ff0000);
-  transition: fill 0.3s 0.05s linear;
-}
-
-/*Иконка сердца состояние клика*/
-
-.like-icon.is-liked .core {
-  fill: var(--svg-fill-color, #ff0000);
-  transition: fill 0.3s linear;
-}
-
-.like-icon.is-liked .main-body {
-  fill: var(--svg-fill-color, #ff0000);
-  transition: fill 0.3s 0.05s linear;
-}
-
-.like-icon.is-liked .contour {
-  fill: var(--svg-fill-color, #ff0000);
-  transition: fill 0.3s 0.06s linear;
 }
 
 .card__like-button {
@@ -421,6 +353,7 @@
   position: relative;
   border: 2px solid var(--main-color, #000);
   padding: 4px;
+  text-transform: uppercase;
   inline-size: 293px;
   block-size: 38px;
 }

@@ -25,11 +25,71 @@
   }
 }
 
+/*Иконка сердца базовое состояние*/
+
+.like-icon .core {
+  fill: transparent;
+  transition: fill 0.3s 0.03s linear;
+}
+
+.like-icon .main-body {
+  fill: transparent;
+  transition: fill 0.3s linear;
+}
+
+.like-icon .contour {
+  fill: var(--svg-contour-color, #000);
+  transition: fill 0.1s linear;
+}
+
+.like-icon .sparks {
+  opacity: 0;
+}
+
+/*Иконка сердца состояния hover и active*/
+
+.like-icon:hover .core {
+  fill: var(--svg-contour-color, #000);
+  transition: fill 0.3s linear;
+}
+
+.like-icon:hover .main-body {
+  fill: var(--svg-contour-color, #000);
+  transition: fill 0.3s 0.05s linear;
+}
+
+.like-icon:active .core {
+  fill: var(--svg-fill-color, #ff0000);
+  transition: fill 0.3s linear;
+}
+
+.like-icon:active .main-body {
+  fill: var(--svg-fill-color, #ff0000);
+  transition: fill 0.3s 0.05s linear;
+}
+
+/*Иконка сердца состояние клика*/
+
+.like-icon.is-liked .core {
+  fill: var(--svg-fill-color, #ff0000);
+  transition: fill 0.3s linear;
+}
+
+.like-icon.is-liked .main-body {
+  fill: var(--svg-fill-color, #ff0000);
+  transition: fill 0.3s 0.05s linear;
+}
+
+.like-icon.is-liked .contour {
+  fill: var(--svg-fill-color, #ff0000);
+  transition: fill 0.3s 0.06s linear;
+}
+
 /*Иконка сердца анимация лайка*/
 
 .like-icon.is-liked .heart {
   transform-origin: center;
-  animation: svg-heart-scale 0.3s 0.1s ease-in backwards;
+  animation: svg-heart-scale 0.3s 0.1s ease-in alternate;
 }
 
 @keyframes svg-heart-scale {
@@ -44,7 +104,7 @@
 
 /*Иконка сердца анимация искр для лайка*/
 .like-icon.is-liked .sparks {
-  animation: svg-heart-sparks 0.3s 0.3s ease-in backwards;
+  animation: svg-heart-sparks 0.3s 0.3s ease-in alternate;
 }
 
 @keyframes svg-heart-sparks {
