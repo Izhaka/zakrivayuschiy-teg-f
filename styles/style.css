@@ -328,7 +328,6 @@
   background-color: var(--bg-color, #fff);
   max-inline-size: 357px;
   inline-size: 100%;
-  overflow: hidden;
 }
 
 .dialog__save-window::backdrop {
